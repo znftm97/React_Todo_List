@@ -10,7 +10,7 @@ class App extends Component{
         ]
     }
 
-    id = 1
+    id = -1
     //id 값 반환
     getId = () =>{
         return ++this.id;

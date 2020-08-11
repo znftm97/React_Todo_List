@@ -5,6 +5,11 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 class TodoItem extends Component{
+    // 성능 최적화
+    // done값 변경이 없으면 false값 반환해서 리렌더링 방지함.
+    shouldComponentUpdate(nextProps, nextState){
+        return this.props.done !== nextProps.done;
+    }
     render(){
         /*비구조화 할당 문법, 이 컴포넌트가 어떤 props를 사용하는지 쉽게 파악,
           this.props 생략 가능*/

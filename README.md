@@ -2,6 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # React Todo list
 
+### shouldComponentUpdate 구현 필요 상황
+- 컴포넌트 배열이 렌더링되는 리스트 컴포넌트일때
+- 리스트 컴포넌트 내부에 있는 아이템 컴포넌트일때
+- 하위 컴포넌트 개수가 많고, 리렌더링 되지 말아야할 상황에서 리렌더링 될때
+
 ## Available Scripts
 
 In the project directory, you can run:
