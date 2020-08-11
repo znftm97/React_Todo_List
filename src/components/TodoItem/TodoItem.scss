@@ -15,6 +15,7 @@
     word-break: break-all;
     &.done {
       text-decoration: line-through;
+      color: $oc-red-7;
     }
   }
 

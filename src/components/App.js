@@ -7,8 +7,6 @@ class App extends Component{
     state = {
         input: '' ,// input 값
         todos: [
-            { id : 0, text: 'done true', done:true},
-            { id : 1, text: 'done false', done:false}
         ]
     }
 
@@ -39,7 +37,7 @@ class App extends Component{
         // 배열에 새 데이터 객체 추가, 전개연산자 사용
         this.setState({
             todos: [...todos, newTodo],
-            input:''
+            input:'' // 추가후에는 input 초기화
         });
     }
 
@@ -53,7 +51,8 @@ class App extends Component{
         const {todos} = this.state;
         const index = todos.findIndex(todo => todo.id === id);
 
-        // 찾은 id값을 가진 데이터의 done값을 반전
+        // 찾은 id값을 가진 데이터의 done값을 반전,
+        // setState에서 배열 새롭게 생성 시 값 유지 위함
         const toggled = {
             ...todos[index],
             done: !todos[index].done
@@ -70,13 +69,26 @@ class App extends Component{
         });
     }
 
+    // 삭제 함수
+    handleRemove = (id) =>{
+        const {todos} = this.state;
+        const index = todos.findIndex(todo => todo.id === id);
+
+        this.setState({
+            todos:[
+                ...todos.slice(0,index),
+                ...todos.slice(index+1, todos.length)
+            ]
+        });
+    }
+
     render(){
         const {input, todos} = this.state; // 비구조화 할당
-        const {handleChange, handleInsert, handleToggle} = this; // 비구조화 할당으로 this.handleChange 에서 this 생략 가능
+        const {handleChange, handleInsert, handleToggle, handleRemove} = this; // 비구조화 할당으로 this.handleChange 에서 this 생략 가능
         return(
             <PageTemplate>
                 <TodoInput onChange={handleChange} onInsert={handleInsert} value={input}/>
-                <TodoList todos={todos} onToggle={handleToggle}/>
+                <TodoList todos={todos} onToggle={handleToggle} onRemove = {handleRemove}/>
             </PageTemplate>
             
         );

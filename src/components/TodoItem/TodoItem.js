@@ -14,7 +14,13 @@ class TodoItem extends Component{
             <div className={cx('todo-item')} onClick={onToggle}>
                 <input className={cx('tick')} type="checkbox" checked={done} readOnly />
                 <div className={cx('text', {done})}> {children} </div>
-                <div className={cx('delete')} onClick={onRemove}> 삭제 </div>
+                <div className={cx('delete')} onClick={(e) => { 
+                    onRemove();
+                    e.stopPropagation(); 
+                    /*자식요소에 onClick 이벤트가 존재하고, 부모 div에서도 onClick 이벤트 존재시
+                      자식(onRemove) -> 부모(onToggle) 순으로 메서드 실행함. 이를 propagation이라함. 따라서 제대로 삭제가 되지않음
+                      이를 방지하기위해 onClick 처리함수 내부에서 e.stopPropagation 호출함.*/
+                }}> 삭제 </div>
             </div>
         );
     }

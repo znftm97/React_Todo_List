@@ -3,6 +3,7 @@ import styles from './PageTemplate.scss';
 import classNames from 'classnames/bind';
 
 // classnames로 styles 바인딩, styles.page-template -> page-template로 작성 가능
+// yarn add classnames
 const cx = classNames.bind(styles);
 
 /*
