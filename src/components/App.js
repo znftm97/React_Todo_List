@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import PageTemplate from './PageTemplate/PageTemplate';
-import TodoInput from './TodoInput/TodoInput';
-import TodoList from './TodoList/TodoList';
+import TodoInputContainer from '../containers/TodoInputContainer';
+import TodoListContainer from '../containers/TodoListContainer';
 
+/*
 class App extends Component{
     state = {
         input: '' ,// input 값
@@ -47,6 +48,7 @@ class App extends Component{
     매개변수에는 콜백함수이며, true값 반환할때가지 0부터 순차탐색함
     true 값 반환시 순차탐색 중지하고 해당 요소의 인덱스 반환 
     */
+    /*
     handleToggle = (id) =>{
         const {todos} = this.state;
         const index = todos.findIndex(todo => todo.id === id);
@@ -91,6 +93,18 @@ class App extends Component{
                 <TodoList todos={todos} onToggle={handleToggle} onRemove = {handleRemove}/>
             </PageTemplate>
             
+        );
+    }
+}
+*/
+
+class App extends Component{
+    render(){
+        return(
+            <PageTemplate>
+                <TodoInputContainer/>
+                <TodoListContainer/>
+            </PageTemplate>
         );
     }
 }
